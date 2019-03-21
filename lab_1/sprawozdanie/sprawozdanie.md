@@ -27,7 +27,7 @@ W celu zatrzymania i podejrzenia stanu wykonywania programy w jego trakcie może
 ```
 b[reak] wskaźnik|nr linii
 ```
-Następnie po ścieżce wykonywania programu możemy poruszać się używając koment takich jak `step`, `stepi`, `continue` itp.
+Następnie po ścieżce wykonywania programu możemy poruszać się używając komend takich jak `step`, `stepi`, `continue` itp.
 Niżej przedstawiono proces zatrzymania programu `hello`:
 ```
 Reading symbols from ./hello...done.
