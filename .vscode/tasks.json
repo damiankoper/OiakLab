@@ -17,7 +17,7 @@
       "options": {
         "cwd": "${fileDirname}"
       },
-      "command": "make && ./${fileBasenameNoExtension}",
+      "command": "make ./bin/${fileBasenameNoExtension}.out",
       "group": {
         "kind": "build",
         "isDefault": true
@@ -38,7 +38,7 @@
       "options": {
         "cwd": "${fileDirname}"
       },
-      "command": "make && gdb -q ./${fileBasenameNoExtension}",
+      "command": "make ./bin/${fileBasenameNoExtension}.out && gdb -q ./bin/${fileBasenameNoExtension}.out",
       "problemMatcher": []
     }
   ]

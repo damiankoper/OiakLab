@@ -1,10 +1,14 @@
-main: main.o
-	ld -melf_i386 main.o -o main
+BIN=./bin
+BUILD=./build
 
-main.o: main.s
-	as --gstabs+ --32 main.s -o main.o 
+$(BUILD)/%.o: %.s
+	$(MKDIR_P) $(dir $@)
+	as --gstabs+ --32 $< -o $@
 
-all: main
 
-clean:
-	rm -f main main.o
+$(BIN)/%.out: $(BUILD)/%.o
+	$(MKDIR_P) $(dir $@)
+	ld -melf_i386 $^ -o $@
+
+
+MKDIR_P ?= mkdir -p
