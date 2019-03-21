@@ -68,7 +68,6 @@ _start:
     jne readLoop
 
   mov %eax, (width)
-
   popa
 
 
