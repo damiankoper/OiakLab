@@ -1,4 +1,4 @@
-<div style="display:flex;justify-content:space-between"><span>Damian Koper, 241292<br>CZ-N-17</span> Wrocław, 13.03.2019r. </div>
+<div style="display:flex;justify-content:space-between"><span>Damian Koper, 241292<br>SR-TN-17</span> Wrocław, 13.03.2019r. </div>
 
 # Lab 1: Podstawy używania dostępnych narzędzi i tworzenia prostych konstrukcji programowych
 
@@ -10,9 +10,9 @@ Polecenie `as hello.s -o hello.o -g` służy do kompilacji programu.
 
 Polecenie `ld hello.s -o hello` służy do przeprowadzenia procesu linkowania.
 
-Połączenie tych funkcji można uzyskać poprzez użycie kompilatora gcc:
+Połączenie tych funkcji można uzyskać poprzez użycie kompilatora gcc. Wymaga on zaopatrzenia kodu w sekcję `main` i samodzielnie dodaje sekcję `_start` i biblioteki języka C. Aby uniknąć w tym przypadku dodawania sekcji `main` należy dodać flagę `-nostdlib`.
 ```
-gcc -g -o hello hello.s
+gcc -m32 -nostdlib -g -o hello hello.s 
 ```
 Flaga `-g` w obu przypadkach dodaje do pliku informacje ułatwiające korzystanie z debuggera.
 
@@ -45,9 +45,40 @@ _start:
   # wywołanie przerwania systemowego EXIT z numerem 0 - oddanie sterowania systemowi operacyjnemu
   int $0x80 
 ```
+## MakeFile
+Do sprawnego tworzenia i uruchamiania lików wykonywalnych użyłem pliku *MakeFile* i komendy `make`, którą wywołuję z odpowiednim targetem przez moje IDE - Visual Studio Code.
+```makefile
+BIN=./bin
+BUILD=./build
+
+$(BUILD)/%.o: %.s
+	$(MKDIR_P) $(dir $@)
+	as -g --32 $< -o $@
+
+
+$(BIN)/%.out: $(BUILD)/%.o
+	$(MKDIR_P) $(dir $@)
+	ld -melf_i386 $^ -o $@
+
+
+MKDIR_P ?= mkdir -p
+```
+
+Wywołanie komendy `make` obecnie aktywnego pliku dokonuje się przez funckjonalność Tasków (VSCode):
+```json
+// tasks.json
+[{
+  "label": "Make",
+  "type": "shell",
+  ...
+  "command": "make ./bin/${fileBasenameNoExtension}.out",
+  ...
+},...]
+```
+<br><br><br>
 
 ## Użycie narzędzia GDB
-Uruchomienie programu `hello` za pomocą debuggera GDB:
+Uruchomienie programu `hello` za pomocą debuggera GDB (flaga `-q` pomija wszystkie nadmiarowe informacje):
 ```
 gdb -q hello.out
 ```
@@ -59,7 +90,7 @@ Starting program: /home/damian_koper/Documents/GitHub/OiakLab/lab_1/hello
 Hello World!
 [Inferior 1 (process 7498) exited normally]
 ```
-W celu zatrzymania i podejrzenia stanu wykonywania programy w jego trakcie możemy ustawić breakpoint (pułapkę) komendą :
+W celu zatrzymania i podejrzenia stanu wykonywania programu w jego trakcie możemy ustawić breakpoint (pułapkę) komendą :
 ```
 b[reak] wskaźnik(adres instrukcji)|nr linii
 ```
@@ -201,9 +232,11 @@ Oprócz testowania i poznawania komend **GDB**, wykonałem również dwa zadane 
    - Link do kodu programu: [starTree.s](https://github.com/damiankoper/OiakLab/blob/master/lab_1/starTree.s)
 
 ## Wnioski
-Z moich obserwacji wynika, że nie potrzeba wielkiego nakładu parcy, aby skonfigurować **GDB** do pracy z moim IDE - Visual Studio Code. Można to zrobić poprzez ręczne ustawianie skrótów klawiszowych i potrzebnych makr, a do uzyskania przenośności konfiguracji i wzbogaconego doświadczenia debggowania można napisać własne rozszerzenie (nie znalazłem istniejącego oferującego podobną funkcjonalność). Ważne jest bowiem, aby stworzyć sobie wygodne środowisko pracy z dość niewygodnymi narzędziami.
+Z moich obserwacji wynika, że nie potrzeba wielkiego nakładu pracy, aby skonfigurować **GDB** do pracy z moim IDE - Visual Studio Code. Można to zrobić poprzez ręczne ustawianie skrótów klawiszowych i potrzebnych makr, a do uzyskania przenośności konfiguracji i wzbogaconego doświadczenia debggowania można napisać własne rozszerzenie (nie znalazłem istniejącego oferującego podobną funkcjonalność). Ważne jest bowiem, aby stworzyć sobie wygodne środowisko pracy z dość niewygodnymi narzędziami.
 
 Sam **GDB** jak i polecenia `objdump` można używać do analizowania kody maszynowego powstałego poprzez kompilację kodu języka wyższego poziomu (C, C++, ...), co daje możliwości szczegółowej analizy działania programu i tym samym późniejszą dokładną optymalizację.
+
+Podczas pisania programu rysującego choinkę duży problem stanowiło ciągłe wywoływanie przerwań bez użycia funkcji lub makra i tym samym śledzenie stanu rejestrów. Pomocne okazało się tu opakowanie procedury wypisujące znak ASCII w osobną funkcję.  
 
 ### Literatura
 1. Wikibooks x86 Assembly - https://en.wikibooks.org/wiki/X86_Assembly
