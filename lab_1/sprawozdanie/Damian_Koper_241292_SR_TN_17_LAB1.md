@@ -234,9 +234,9 @@ Oprócz testowania i poznawania komend **GDB**, wykonałem również dwa zadane 
 ## Wnioski
 Z moich obserwacji wynika, że nie potrzeba wielkiego nakładu pracy, aby skonfigurować **GDB** do pracy z moim IDE - Visual Studio Code. Można to zrobić poprzez ręczne ustawianie skrótów klawiszowych i potrzebnych makr, a do uzyskania przenośności konfiguracji i wzbogaconego doświadczenia debggowania można napisać własne rozszerzenie (nie znalazłem istniejącego oferującego podobną funkcjonalność). Ważne jest bowiem, aby stworzyć sobie wygodne środowisko pracy z dość niewygodnymi narzędziami.
 
-Sam **GDB** jak i polecenia `objdump` można używać do analizowania kody maszynowego powstałego poprzez kompilację kodu języka wyższego poziomu (C, C++, ...), co daje możliwości szczegółowej analizy działania programu i tym samym późniejszą dokładną optymalizację.
+Sam **GDB** jak i polecenia `objdump` można używać do analizowania kodu maszynowego powstałego poprzez kompilację kodu języka wyższego poziomu (C, C++, ...), co daje możliwości szczegółowej analizy działania programu i tym samym późniejszą dokładną optymalizację.
 
-Podczas pisania programu rysującego choinkę duży problem stanowiło ciągłe wywoływanie przerwań bez użycia funkcji lub makra i tym samym śledzenie stanu rejestrów. Pomocne okazało się tu opakowanie procedury wypisujące znak ASCII w osobną funkcję.  
+Podczas pisania programu rysującego choinkę duży problem stanowiło ciągłe wywoływanie przerwań bez użycia funkcji lub makra i tym samym śledzenie stanu rejestrów i wysoka *spaghettyfikacja*. Pomocne okazało się tu opakowanie procedury wypisujące znak ASCII w osobną funkcję.
 
 ### Literatura
 1. Wikibooks x86 Assembly - https://en.wikibooks.org/wiki/X86_Assembly
