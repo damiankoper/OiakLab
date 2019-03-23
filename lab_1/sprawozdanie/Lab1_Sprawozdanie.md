@@ -1,6 +1,6 @@
-<div style="display:flex;justify-content:space-between"><span>Damian Koper<br>241292</span> Wrocław, 13.03.2019r. </div>
+<div style="display:flex;justify-content:space-between"><span>Damian Koper, 241292<br>CZ-N-17</span> Wrocław, 13.03.2019r. </div>
 
-# Podstawy używania dostępnych narzędzi i tworzenia prostych konstrukcji programowych
+# Lab 1: Podstawy używania dostępnych narzędzi i tworzenia prostych konstrukcji programowych
 
 ## Cel ćwiczenia
 Celem ćwiczenia było zapoznanie się z dostępnymi narzędziami służącymi do kompilacji, linkowania, debugowania i podglądania stanu i struktury programu jak i plików wykonywalnych. Ćwiczenie skupiało się również na tworzeniu prostych konstrukcji programowych - program 'Hello World!' i rysowanie choinki o zadanej szerokości.
@@ -17,7 +17,7 @@ gcc -g -o hello hello.s
 Flaga `-g` w obu przypadkach dodaje do pliku informacje ułatwiające korzystanie z debuggera.
 
 ## Program `hello`
-W komentarzach do kod opisana jest podstawowa struktura programu:
+W komentarzach Kodu opisana jest podstawowa struktura programu:
 ```gas
 # deklarcje zmiennych
 .data 
@@ -38,8 +38,8 @@ _start:
   mov $hello, %ecx
   mov $helloLen, %edx
   # wywołanie przerwania systemowego WRITE z parametrami wyżej przekazanymi do rejestrów
-  
   int $0x80 
+
   mov $EXIT, %eax
   mov $0, %ebx
   # wywołanie przerwania systemowego EXIT z numerem 0 - oddanie sterowania systemowi operacyjnemu
@@ -148,8 +148,8 @@ Breakpoint 1, _start () at hello.s:18
 0x804909e:      114 'r' 108 'l' 100 'd' 33 '!'  10 '\n'
 ```
 
-## Zawartość skompilowanego pliku wykonywalnego
-W celu obejrzenia zawartości pliku wykonywalnego możemy użyć polecenia `hexdump`, które wyświetli nam zawartość pliku, który jest jednowymiarową tablicą, w postaci szesnastkowej. Przykład dla programu hello:
+## Zawartość pliku wykonywalnego
+W celu obejrzenia zawartości pliku wykonywalnego możemy użyć polecenia `hexdump`, które wyświetli zawartość pliku, który jest jednowymiarową tablicą, w postaci szesnastkowej. Przykład dla programu hello:
 ```
 $ hexdump hello.out 
 0000000 457f 464c 0101 0001 0000 0000 0000 0000
@@ -200,4 +200,17 @@ Oprócz testowania i poznawania komend **GDB**, wykonałem również dwa zadane 
    - W sekcji `.bss` zarezerwowałem niezainicjalizowaną pamięć na bufor wejściowy, który przetwarzam na wartość liczbową
    - Link do kodu programu: [starTree.s](https://github.com/damiankoper/OiakLab/blob/master/lab_1/starTree.s)
 
+## Wnioski
+Z moich obserwacji wynika, że nie potrzeba wielkiego nakładu parcy, aby skonfigurować **GDB** do pracy z moim IDE - Visual Studio Code. Można to zrobić poprzez ręczne ustawianie skrótów klawiszowych i potrzebnych makr, a do uzyskania przenośności konfiguracji i wzbogaconego doświadczenia debggowania można napisać własne rozszerzenie (nie znalazłem istniejącego oferującego podobną funkcjonalność). Ważne jest bowiem, aby stworzyć sobie wygodne środowisko pracy z dość niewygodnymi narzędziami.
 
+Sam **GDB** jak i polecenia `objdump` można używać do analizowania kody maszynowego powstałego poprzez kompilację kodu języka wyższego poziomu (C, C++, ...), co daje możliwości szczegółowej analizy działania programu i tym samym późniejszą dokładną optymalizację.
+
+### Literatura
+1. Wikibooks x86 Assembly - https://en.wikibooks.org/wiki/X86_Assembly
+2. Laboratorium AK –ATT asembler (LINUX) - http://zak.ict.pwr.wroc.pl/materials/architektura/laboratorium%20AK2/Linux-AK2-lab-2018%20May.pdf
+3. University of Virginia Computer Science - x86 Assembly Guide
+http://www.cs.virginia.edu/~evans/cs216/guides/x86.html
+4. Prezentacja do wykładu
+5. Dokumentacja GDB - https://sourceware.org/gdb/current/onlinedocs/gdb/
+6. `gdb help`
+7. `man command`
