@@ -10,14 +10,14 @@ Polecenie `as hello.s -o hello.o -g` służy do kompilacji programu.
 
 Polecenie `ld hello.s -o hello` służy do przeprowadzenia procesu linkowania.
 
-Połączenie tych funkcji można uzyskać poprzez użycie kompilatora gcc. Wymaga on zaopatrzenia kodu w sekcję `main` i samodzielnie dodaje sekcję `_start` i biblioteki języka C. Aby uniknąć w tym przypadku dodawania sekcji `main` należy dodać flagę `-nostdlib`.
+Połączenie tych funkcji można uzyskać poprzez użycie kompilatora gcc. Wymaga on zaopatrzenia kodu w sekcję `main` i samodzielnie dodaje sekcję `_start` i biblioteki języka C. Aby uniknąć w dodawania sekcji `main` i nadmiarowej zawartości, należy dodać flagę `-nostdlib`.
 ```
 gcc -m32 -nostdlib -g -o hello hello.s 
 ```
 Flaga `-g` w obu przypadkach dodaje do pliku informacje ułatwiające korzystanie z debuggera.
 
 ## Program `hello`
-W komentarzach Kodu opisana jest podstawowa struktura programu:
+W komentarzach kodu opisana jest podstawowa struktura programu:
 ```gas
 # deklarcje zmiennych
 .data 
@@ -46,7 +46,7 @@ _start:
   int $0x80 
 ```
 ## MakeFile
-Do sprawnego tworzenia i uruchamiania lików wykonywalnych użyłem pliku *MakeFile* i komendy `make`, którą wywołuję z odpowiednim targetem przez moje IDE - Visual Studio Code.
+Do sprawnego tworzenia i uruchamiania plików wykonywalnych użyłem pliku *MakeFile* i komendy `make`, którą wywołuję z odpowiednim targetem przez moje IDE - Visual Studio Code.
 ```makefile
 BIN=./bin
 BUILD=./build
