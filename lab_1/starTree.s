@@ -72,7 +72,7 @@ _start:
 
 
 
-  # ebx - liczni gwiazdek - 1 :)
+  # ebx - licznik gwiazdek - 1 :)
   movl $0, %ebx
   # eax - obliczanie początkowego licznika spacji
   movl (width), %eax
@@ -100,7 +100,7 @@ _start:
     whileStar:
       push star
       call printASCII
-      pop star
+      pop star # trzeba popnąć pusznięty argument żeby stos się zgadzał
       dec %ebx
       cmp $0, %ebx
       jge whileStar
