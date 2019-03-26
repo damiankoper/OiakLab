@@ -32,7 +32,7 @@ _start:
   call printStr
   add $4, %esp # pop bez zapisywania
 
-  # printuj argumenty
+  # printuj env
   mov (%esp), %eax
   inc %eax
   env:
