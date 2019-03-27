@@ -1,12 +1,8 @@
-.data
-    WRITE = 4
-    STDOUT = 1
-    SYSCALL32 = 0x80
-    eol: .ascii "\n"
+.include "add.s"
 .text
-# printStr(char* str)
-printStr:
-    pushl %ebp
+# strToIntHex(char *string, super duper long* long, int wordsCount)
+strFoIntHex:
+    push %ebp
     movl %esp, %ebp
     pusha
 
@@ -21,20 +17,7 @@ printStr:
         jmp counter
     stop:
 
-    mov $WRITE, %eax
-    mov $STDOUT, %ebx
-    mov 8(%ebp), %ecx
-    int $SYSCALL32
-
-    mov $WRITE, %eax
-    mov $STDOUT, %ebx
-    mov $eol, %ecx
-    mov $1, %edx
-    int $SYSCALL32
-
     popa
     movl %ebp, %esp
-    popl %ebp
+    pop %ebp
     ret
-
-     
