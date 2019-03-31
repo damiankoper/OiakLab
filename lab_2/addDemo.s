@@ -12,6 +12,8 @@
     .long 0
     .endr
     # c2 = c1 + c2
+
+    str: .string "0xAAAAAAAABBBBBBBBCCCCCCCCDDDDDDDDEEEEEEEE"
 .bss
 
 .text
@@ -20,7 +22,13 @@
 .include "utils/readStr.s"
 .include "utils/printStr.s"
 .globl _start
-_start:
+_start: 
+
+
+push $WORD_WIDTH
+push $c2 
+push $str
+call strToIntHex
 
 # Get hex string
 pushl $INPUT_SIZE
@@ -34,5 +42,5 @@ pushl $c2
 pushl $c1
 call addFn
 
-jmp exit
- 
+jmp exit   
+         
