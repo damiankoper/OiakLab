@@ -9,18 +9,27 @@
     .long 0
     .endr
     # c2 = c1 + c2
+
+    str: .string "0xAAAAAAAABBBBBBBBCCCCCCCCDDDDDDDDEEEEEEEE"
 .bss
 
 .text
 .include "utils/exit.s"
 .include "utils/add.s"
+.include "utils/strToIntHex.s"
 .globl _start
-_start:
+_start: 
 
-pushl $WORD_WIDTH
-pushl $c2
-pushl $c1
-call addFn
 
-jmp exit
- 
+push $WORD_WIDTH
+push $c2 
+push $str
+call strToIntHex
+
+#pushl $WORD_WIDTH
+#pushl $c2
+#pushl $c1
+#call addFn
+
+jmp exit   
+         

@@ -14,15 +14,15 @@ _start:
   lea str1, %eax
   push %eax
   call printStr
-  add $4, %esp # pop bez zapisywania
 
+ 
   # printuj argumenty
   mov (%esp), %eax
   xor %ecx, %ecx
   arguments:
     push 4(%esp, %ecx, 4)
     call printStr
-    add $4, %esp # pop bez zapisywania
+
     inc %ecx
     cmp %eax, %ecx
     jne arguments
@@ -30,7 +30,6 @@ _start:
   lea str2, %eax
   push %eax
   call printStr
-  add $4, %esp # pop bez zapisywania
 
   # printuj env
   mov (%esp), %eax
@@ -40,7 +39,7 @@ _start:
     je stopEnv
     push 4(%esp, %eax, 4)
     call printStr
-    add $4, %esp # pop bez zapisywania
+
     inc %eax
     jne env
   stopEnv:

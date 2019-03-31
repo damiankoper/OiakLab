@@ -35,6 +35,6 @@ printStr:
     popa
     movl %ebp, %esp
     popl %ebp
-    ret
+    ret $4
 
      
