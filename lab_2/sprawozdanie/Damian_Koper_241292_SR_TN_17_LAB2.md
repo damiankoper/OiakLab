@@ -138,7 +138,7 @@ Widać tutaj, że z powodzeniem używane są funkcje dodawania i odejmowania z p
 ## Debugger - GDB / Machine Interface
 Niezbyt praktyczne i wizualnie nieatrakcyjne GBD, nawet uruchomione w trybie *Text User Interface*, skłoniło mnie to napisania rozszerzenia do Visual Studio Code, które po rozpoczęciu sesji debugowania uruchamia w tle GDB w trybie interpretera *mi* - Machine Interface. Komunikacja VsCode z GDB odbywa się poprzez odpowiednie parsowanie strumienia wyjściowego GDB i wysyłanie na wejście poleceń, które specyfikuje dokumentacja GDB/MI.
 
-[](https://github.com/damiankoper/OiakLab/tree/master/lab_2/sprawozdanie/debug.gif)
+![GIF](https://github.com/damiankoper/OiakLab/blob/master/lab_2/sprawozdanie/debug.gif?raw=true)
 
 *VsCode Debug Protocol* pozwala również na ustawienie *watchy*, wyświetlanie stosu wywołań, oraz podgląd zmiennych, zamiast których wyświetlam wszystkie rejestry. Interakcja z GDB za pomocą interfejsu konsolowego jest możliwa poprzez *Debug Console*. Z możliwości napisanego rozszerzenia korzystałem w procesie debugowania powyżej przedstawionych programów, sam debugger jednak posiada niedoskonałości i ma duże pole do rozwoju, który, w ramach rosnących potrzeb, będę uskuteczniał.
 
