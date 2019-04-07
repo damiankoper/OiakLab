@@ -1,9 +1,12 @@
+.extern printf
+.extern scanf
+.extern _exit
 .data
     INPUT_SIZE = 100
     strBuffer1: .space INPUT_SIZE
     strBuffer2: .space INPUT_SIZE
     strBuffer3: .space INPUT_SIZE
-
+    strFormat: .string "%s"
     WORD_WIDTH: .long 4
     c1: 
     .rep 16
@@ -16,12 +19,10 @@
 .bss
 
 .text
-.include "utils/exit.s"
-.include "utils/add.s"
-.include "utils/readStr.s"
-.include "utils/printStr.s"
+.include "utils/sub.s"
 .include "utils/strToIntHex.s"
 .include "utils/intHexToStr.s"
+
 
 .globl _start
 _start: 
@@ -33,21 +34,27 @@ je addDemo_getArgsFromStack
 
 addDemo_readArgs:
     # Get hex string 1
-    push $INPUT_SIZE
-    push $strBuffer1
-    call readStr
-    lea strBuffer1, %eax
+    push $strBuffer2
+    push $strFormat
+    call scanf
+    add $8, %esp
+    push $strBuffer2
 
     # Get hex string 2
-    push $INPUT_SIZE
-    push $strBuffer2
-    call readStr
-    lea strBuffer2, %ebx
+    push $strBuffer1
+    push $strFormat
+    call scanf
+    add $8, %esp
+    push $strBuffer1
 
     # Get hex WORD_SIZE
-    push $INPUT_SIZE
     push $strBuffer3
-    call readStr
+    push $strFormat
+    call scanf
+    add $8, %esp
+
+    pop %ebx
+    pop %eax
 
     push $1
     push $c1
@@ -89,19 +96,21 @@ push $c2
 push %ebx
 call strToIntHex
 
-# Add
+# Subtract
 push WORD_WIDTH
 push $c2
 push $c1
-call addFn
+call subFn
 
-# Get & print sum string
+# Get & print difference string
 push WORD_WIDTH
 push $strBuffer1
-push $c2
+push $c1
 call intHexToStr
 
 push $strBuffer1
-call printStr
+call printf
+add $4, %esp
 
-jmp exit
+push $0
+call exit # tym raze nie moja funkcja, a z biblioteki C

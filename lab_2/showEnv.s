@@ -41,7 +41,7 @@ _start:
     call printStr
 
     inc %eax
-    jne env
+    jmp env
   stopEnv:
 
   jmp exit

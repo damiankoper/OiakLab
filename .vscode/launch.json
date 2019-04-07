@@ -7,9 +7,44 @@
         {
             "type": "gdb",
             "request": "launch",
+            "name": "showEnv",
+            "program": "${workspaceFolder}/lab_2/bin/showEnv.out",
+            "preLaunchTask": "makeShowEnv",
+            "arguments": ""
+        },
+        {
+            "type": "gdb",
+            "request": "launch",
             "name": "addDemo",
             "program": "${workspaceFolder}/lab_2/bin/addDemo.out",
-            "preLaunchTask": "makeAddDemo"
+            "preLaunchTask": "makeAddDemo",
+            "arguments": "0x0000000000000002 0x0000000000000008 0x00000002"
+        },
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "subDemo",
+            "program": "${workspaceFolder}/lab_2/bin/subDemo.out",
+            "preLaunchTask": "makeSubDemo",
+           // "arguments": "0x0000000000000002 0x0000000000000008 0x00000002"
+        },
+
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "mulDemo",
+            "program": "${workspaceFolder}/lab_2/bin/mulDemo.out",
+            "preLaunchTask": "makeMulDemo",
+            "arguments": "0x0000000000000000000000123456789A 0x0000000000000000000000123456789A 0x00000004"
+        },
+
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "divDemo",
+            "program": "${workspaceFolder}/lab_2/bin/divDemo.out",
+            "preLaunchTask": "makeDivDemo",
+            "arguments": "0x00000000000000000000123000234009 0x00000000000000000000000000000002 0x00000004"
         }
     ]
 }

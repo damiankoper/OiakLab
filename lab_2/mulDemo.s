@@ -6,18 +6,18 @@
 
     WORD_WIDTH: .long 4
     c1: 
-    .rep 16
+    .rep 4
     .long 0xffffffff
     .endr
     c2:
-    .rep 16
+    .rep 4
     .long 1
     .endr
 .bss
 
 .text
 .include "utils/exit.s"
-.include "utils/add.s"
+.include "utils/mul.s"
 .include "utils/readStr.s"
 .include "utils/printStr.s"
 .include "utils/strToIntHex.s"
@@ -29,9 +29,9 @@ _start:
 # Sprawdź czy jest coś w argv, argc
 mov (%esp), %eax
 cmp $4, %eax
-je addDemo_getArgsFromStack
+je mulDemo_getArgsFromStack
 
-addDemo_readArgs:
+mulDemo_readArgs:
     # Get hex string 1
     push $INPUT_SIZE
     push $strBuffer1
@@ -59,7 +59,7 @@ addDemo_readArgs:
 
     jmp argsFetched
 
-addDemo_getArgsFromStack:
+mulDemo_getArgsFromStack:
     # Get hex string 1 from stack
     mov $8, %eax
     mov (%esp, %eax, 1), %eax
@@ -89,16 +89,24 @@ push $c2
 push %ebx
 call strToIntHex
 
-# Add
+# Multiply
 push WORD_WIDTH
 push $c2
 push $c1
-call addFn
+call mulFn
 
-# Get & print sum string
+# Get & print mul string
 push WORD_WIDTH
 push $strBuffer1
 push $c2
+call intHexToStr
+
+push $strBuffer1
+call printStr
+
+push WORD_WIDTH
+push $strBuffer1
+push $c1
 call intHexToStr
 
 push $strBuffer1

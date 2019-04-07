@@ -4,6 +4,29 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "makeShowEnv",
+      "type": "shell",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "options": {
+        "cwd": "${workspaceRoot}/lab_2"
+      },
+      "command": "make ./bin/showEnv.out",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+
+
+    {
       "label": "makeAddDemo",
       "type": "shell",
       "presentation": {
@@ -18,6 +41,73 @@
         "cwd": "${workspaceRoot}/lab_2"
       },
       "command": "make ./bin/addDemo.out",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+
+
+    {
+      "label": "makeSubDemo",
+      "type": "shell",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "options": {
+        "cwd": "${workspaceRoot}/lab_2"
+      },
+      "command": "make ./bin/subDemo.out",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "makeMulDemo",
+      "type": "shell",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "options": {
+        "cwd": "${workspaceRoot}/lab_2"
+      },
+      "command": "make ./bin/mulDemo.out",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "makeDivDemo",
+      "type": "shell",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "options": {
+        "cwd": "${workspaceRoot}/lab_2"
+      },
+      "command": "make ./bin/divDemo.out",
       "group": {
         "kind": "build",
         "isDefault": true
