@@ -99,7 +99,6 @@ divFn:
             pushl $result
             pushl $add1
             call addFn
-
         addsubEnd:
 
         movl $result, %eax
