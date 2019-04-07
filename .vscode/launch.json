@@ -18,7 +18,7 @@
             "name": "addDemo",
             "program": "${workspaceFolder}/lab_2/bin/addDemo.out",
             "preLaunchTask": "makeAddDemo",
-            "arguments": "0x0000000000000002 0x0000000000000008 0x00000002"
+            "arguments": ""
         },
         {
             "type": "gdb",
@@ -44,7 +44,7 @@
             "name": "divDemo",
             "program": "${workspaceFolder}/lab_2/bin/divDemo.out",
             "preLaunchTask": "makeDivDemo",
-            "arguments": "0x00000000000000000000123000234009 0x00000000000000000000000000000002 0x00000004"
+            "arguments": "0x000000001000000000000000000000000 0x00000000000000000000000000000005 0x00000004"
         }
     ]
 }

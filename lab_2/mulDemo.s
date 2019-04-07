@@ -17,11 +17,6 @@
 
 .text
 .include "utils/exit.s"
-.include "utils/mul.s"
-.include "utils/readStr.s"
-.include "utils/printStr.s"
-.include "utils/strToIntHex.s"
-.include "utils/intHexToStr.s"
 
 .globl _start
 _start: 

@@ -1,14 +1,15 @@
 .data
-    buffer:
+    mul_buffer:
         .rep 8
         .long 0
         .endr
-    result:  
+    mul_result:  
         .rep 8
         .long 0
         .endr
 .text
-.include "utils/add.s"
+.globl mulFn
+.extern addFn
 # mulFn(superDuperLong* long1, superDuperLong* long2, int size)
 # !!!! Działa tylko na liczbach, gdzie size = 4 !!!!
 # wynik = long2:long1
@@ -23,6 +24,7 @@ mulFn:
     mov 8(%ebp), %ebx  # A
     mov 12(%ebp), %ecx # B
 
+    call clearResult
 
     # Pętla iterująca po B
     mov $3, %esi
@@ -41,15 +43,15 @@ mulFn:
             push %ecx
             add %esi, %edi
             mov %edi, %ecx
-            movl %edx, buffer(,%ecx,4)
+            movl %edx, mul_buffer(,%ecx,4)
             inc %ecx
-            movl %eax, buffer(,%ecx,4)
+            movl %eax, mul_buffer(,%ecx,4)
             pop %ecx
 
             # Dodanie bufora do wyniku
             pushl $8 # hardkodowany rozmiar x2, ponieważ wynik mnożenia jest/może być 2x większy
-            pushl $result
-            pushl $buffer
+            pushl $mul_result
+            pushl $mul_buffer
             call addFn
 
             call clearBuffer
@@ -67,7 +69,7 @@ mulFn:
     # Część wyższa
     mov $0, %eax
     resultLoop1:
-        mov result(,%eax,4), %edx
+        mov mul_result(,%eax,4), %edx
         mov %edx, (%ecx, %eax, 4)
 
         inc %eax
@@ -78,7 +80,7 @@ mulFn:
     mov $4, %eax
     mov $0, %ecx
     resultLoop2:
-        mov result(, %eax, 4), %edx
+        mov mul_result(, %eax, 4), %edx
         mov %edx, (%ebx, %ecx, 4)
 
         inc %ecx
@@ -86,23 +88,36 @@ mulFn:
         cmp $8, %eax
         jne resultLoop2
 
-    popa
+        popa
         movl %ebp, %esp
         popl %ebp
-        ret $8
+        ret $12
 
 
-    # Mały pomocnik do czyszczenia bufora
-    clearBuffer:
+# Mali pomocnicy do czyszczenia buforów
+clearBuffer:
     pusha
     mov $8, %ecx
 
     clearBufferLoop:
         dec %ecx
-        movl $0, buffer(,%ecx,4)
+        movl $0, mul_buffer(,%ecx,4)
         inc %ecx
         loop clearBufferLoop
     popa
     ret
+
+clearResult:
+    pusha
+    mov $8, %ecx
+
+    clearResultLoop:
+        dec %ecx
+        movl $0, mul_result(,%ecx,4)
+        inc %ecx
+        loop clearResultLoop
+    popa
+    ret
+
 
     

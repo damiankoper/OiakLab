@@ -4,6 +4,7 @@
     SYSCALL32 = 0x80
     eol: .ascii "\n"
 .text
+.globl printStr
 # printStr(char* str)
 printStr:
     pushl %ebp

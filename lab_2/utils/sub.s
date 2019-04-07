@@ -1,4 +1,5 @@
 .text
+.globl subFn
 # subFn(superDuperLong* long1, superDuperLong* long2, int size)
 # long1 = long1 - long2
 subFn:

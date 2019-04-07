@@ -7,21 +7,16 @@
     WORD_WIDTH: .long 4
     c1: 
     .rep 16
-    .long 0xffffffff
+    .long 0
     .endr
     c2:
     .rep 16
-    .long 1
+    .long 0
     .endr
 .bss
 
 .text
 .include "utils/exit.s"
-.include "utils/add.s"
-.include "utils/readStr.s"
-.include "utils/printStr.s"
-.include "utils/strToIntHex.s"
-.include "utils/intHexToStr.s"
 
 .globl _start
 _start: 
@@ -44,18 +39,7 @@ addDemo_readArgs:
     call readStr
     lea strBuffer2, %ebx
 
-    # Get hex WORD_SIZE
-    push $INPUT_SIZE
-    push $strBuffer3
-    call readStr
-
-    push $1
-    push $c1
-    push $strBuffer3
-    call strToIntHex
-
-    movl c1, %ecx
-    movl %ecx, WORD_WIDTH
+    # WORD_SIZE in fixed 4
 
     jmp argsFetched
 
@@ -65,16 +49,6 @@ addDemo_getArgsFromStack:
     mov (%esp, %eax, 1), %eax
     mov $12, %ebx
     mov (%esp, %ebx, 1), %ebx
-    mov $16, %ecx
-    movl (%esp, %ecx, 1), %ecx
-
-    push $1
-    push $c1
-    push %ecx
-    call strToIntHex
-
-    movl c1, %ecx
-    movl %ecx, WORD_WIDTH
     
 argsFetched:
 
@@ -82,12 +56,12 @@ argsFetched:
 push (WORD_WIDTH)
 push $c1
 push %eax
-call strToIntHex
+call strToIntDec
 
 push (WORD_WIDTH)
 push $c2
 push %ebx
-call strToIntHex
+call strToIntDec
 
 # Add
 push WORD_WIDTH

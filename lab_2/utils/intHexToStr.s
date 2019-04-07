@@ -1,5 +1,6 @@
 .text
 # intHexToStr(superDuperLong* long, char* string, int wordsCount)
+.globl intHexToStr
 intHexToStr:
     push %ebp
     movl %esp, %ebp

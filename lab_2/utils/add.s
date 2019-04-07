@@ -1,6 +1,7 @@
 .text
 # addFn(superDuperLong* long1, superDuperLong* long2, int size)
 # long2 = long1 + long2
+.globl addFn
 addFn:
     push %ebp
     mov %esp, %ebp

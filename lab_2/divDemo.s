@@ -17,11 +17,6 @@
 
 .text
 .include "utils/exit.s"
-.include "utils/div.s"
-.include "utils/readStr.s"
-.include "utils/printStr.s"
-.include "utils/strToIntHex.s"
-.include "utils/intHexToStr.s"
 
 .globl _start
 _start: 
@@ -99,14 +94,6 @@ call divFn
 push WORD_WIDTH
 push $strBuffer1
 push $c1
-call intHexToStr
-
-push $strBuffer1
-call printStr
-
-push WORD_WIDTH
-push $strBuffer1
-push $c2
 call intHexToStr
 
 push $strBuffer1

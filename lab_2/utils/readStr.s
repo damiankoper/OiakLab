@@ -3,6 +3,7 @@
     READ = 3
     SYSCALL32 = 0x80
 .text
+.globl readStr
 # readStr(char* result, int length)
 readStr:
     push %ebp

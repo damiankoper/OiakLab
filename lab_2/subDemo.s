@@ -19,9 +19,6 @@
 .bss
 
 .text
-.include "utils/sub.s"
-.include "utils/strToIntHex.s"
-.include "utils/intHexToStr.s"
 
 
 .globl _start

@@ -1,4 +1,5 @@
 .text
+.globl strToIntHex
 # liczba zapisana ma format 0xFFFFFFFF dla size = 1
 # liczba znaków po 0x musi być wielokrotnością 8
 # strToIntHex(char *string, superDuperLong* long, int size)
