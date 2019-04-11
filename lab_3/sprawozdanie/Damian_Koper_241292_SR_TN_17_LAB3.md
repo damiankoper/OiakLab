@@ -1,22 +1,13 @@
-<div style="display:flex;justify-content:space-between"><span>Damian Koper, 241292<br>SR-TN-17</span> Wrocław, 27.03.2019r. </div>
+<div style="display:flex;justify-content:space-between"><span>Damian Koper, 241292<br>SR-TN-17</span> Wrocław, 10.04.2019r. </div>
 
-# Lab 2: 
+# Lab 3: 
 
 ## Cel ćwiczenia
 
-## Śledzenie stosu po początkowycm wywołaniu
-Ilość argumentów znajduje się na szczycie stosu:
-```
-(gdb) x /d $esp
-```
-Wskaźnik na argumenty programu:
-```
-(gdb) x /s *(char **)($esp+4)
-```
-Wskażnik na zmienne środowiskowe:
-```
-(gdb) x /s *(char **)($esp+16)
-```
+##
+
+Etykiety lokalne,
+makra
 
 
 ## Programy

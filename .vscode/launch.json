@@ -45,6 +45,30 @@
             "program": "${workspaceFolder}/lab_2/bin/divDemo.out",
             "preLaunchTask": "makeDivDemo",
             "arguments": "0x000000001000000000000000000000000 0x00000000000000000000000000000005 0x00000004"
+        },
+
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "fAdd",
+            "program": "${workspaceFolder}/lab_3/bin/fAdd.out",
+            "preLaunchTask": "makeFAdd",
+        },
+
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "fAdd",
+            "program": "${workspaceFolder}/lab_3/bin/fAdd.out",
+            "preLaunchTask": "makeFAdd",
+        },
+
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "fMul",
+            "program": "${workspaceFolder}/lab_3/bin/fMul.out",
+            "preLaunchTask": "makeFMul",
         }
     ]
 }
