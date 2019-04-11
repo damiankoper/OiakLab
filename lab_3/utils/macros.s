@@ -2,7 +2,7 @@
 
 .macro expOfTo f reg
   movl \f, \reg
-  andl $0x70000000, \reg
+  andl $0x7f800000, \reg
   shr $23, \reg
 .endm
 
@@ -11,7 +11,7 @@
   cmp $0, \reg
   movl \f, \reg
   je 4f
-  orl $0x00100000, \reg
+  orl $0x00800000, \reg
   4: # local label
   andl $0x00ffffff, \reg
 .endm
