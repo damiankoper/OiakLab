@@ -1,7 +1,7 @@
 .data
-  f1: .float -1.0
+  f1: .float 15.0
 
-  f2: .float 0.0
+  f2: .float 4.0
   result: .float 0.0
 .text
 
@@ -17,6 +17,10 @@ _start:
   andl $0x80000000, %eax
   movl %eax, result
   
+  movl f1, %eax
+  movl f2, %edx
+  shl %eax
+  shl %edx
   # Obsługa zer
   cmp $0, %eax
   je mulZero

@@ -61,6 +61,14 @@
             "name": "fMul",
             "program": "${workspaceFolder}/lab_3/bin/fMul.out",
             "preLaunchTask": "makeFMul"
+        },
+
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "fDiv",
+            "program": "${workspaceFolder}/lab_3/bin/fDiv.out",
+            "preLaunchTask": "makeFDiv"
         }
     ]
 }
