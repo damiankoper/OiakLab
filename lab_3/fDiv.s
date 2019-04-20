@@ -80,8 +80,6 @@ _start:
 
   fdiv_normalize_right:
   movl %eax, %ecx
-# 0000 1000 0000 0000 0000 0000 0000 0000
-# 1 0000 0000 0000 0000 0000 0000
   andl $0xfc000000, %ecx
   cmpl $0x04000000, %ecx
   jle fdiv_do_not_normalize_right

@@ -69,6 +69,14 @@
             "name": "fDiv",
             "program": "${workspaceFolder}/lab_3/bin/fDiv.out",
             "preLaunchTask": "makeFDiv"
+        },
+
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "fPrint",
+            "program": "${workspaceFolder}/lab_3/bin/fPrint.out",
+            "preLaunchTask": "makeFPrint"
         }
     ]
 }
