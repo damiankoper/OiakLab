@@ -1,5 +1,4 @@
 .data
-  add_result: .long 0
   f1: .float 2.5
   d1: .quad 0
   d2: .double 2.5

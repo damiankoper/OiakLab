@@ -26,9 +26,8 @@
             "name": "subDemo",
             "program": "${workspaceFolder}/lab_2/bin/subDemo.out",
             "preLaunchTask": "makeSubDemo",
-           // "arguments": "0x0000000000000002 0x0000000000000008 0x00000002"
+            // "arguments": "0x0000000000000002 0x0000000000000008 0x00000002"
         },
-
         {
             "type": "gdb",
             "request": "launch",
@@ -37,7 +36,6 @@
             "preLaunchTask": "makeMulDemo",
             "arguments": "0x0000000000000000000000123456789A 0x0000000000000000000000123456789A 0x00000004"
         },
-
         {
             "type": "gdb",
             "request": "launch",
@@ -46,7 +44,6 @@
             "preLaunchTask": "makeDivDemo",
             "arguments": "0x000000001000000000000000000000000 0x00000000000000000000000000000005 0x00000004"
         },
-
         {
             "type": "gdb",
             "request": "launch",
@@ -54,7 +51,6 @@
             "program": "${workspaceFolder}/lab_3/bin/fAdd.out",
             "preLaunchTask": "makeFAdd",
         },
-
         {
             "type": "gdb",
             "request": "launch",
@@ -62,7 +58,6 @@
             "program": "${workspaceFolder}/lab_3/bin/fMul.out",
             "preLaunchTask": "makeFMul"
         },
-
         {
             "type": "gdb",
             "request": "launch",
@@ -70,13 +65,19 @@
             "program": "${workspaceFolder}/lab_3/bin/fDiv.out",
             "preLaunchTask": "makeFDiv"
         },
-
         {
             "type": "gdb",
             "request": "launch",
             "name": "fPrint",
             "program": "${workspaceFolder}/lab_3/bin/fPrint.out",
             "preLaunchTask": "makeFPrint"
+        },
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "fPrintFPU",
+            "program": "${workspaceFolder}/lab_3/bin/fPrintFPU.out",
+            "preLaunchTask": "makeFPrintFPU"
         }
     ]
 }

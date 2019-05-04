@@ -95,7 +95,7 @@ $2 = 2.5
 
 ## Programy
 
-* Kody programów `fAdd`, `fMul`, `fDiv`, `fPrint`, znajdują się pod adresem:
+* Kody programów `fAdd`, `fMul`, `fDiv`, `fPrint`, `fPrintFPU` znajdują się pod adresem:
 https://github.com/damiankoper/OiakLab/tree/master/lab_3
 
 ### Makra
@@ -140,7 +140,7 @@ Wszystkie programy jako zmienne przechowują dwie hardkodowane liczby zmiennoprz
 
 #### Printf
 
-Jako, że w treści zadania nie ma wymogu o stosowaniu operacji stałoprzecinkowych explicite, do wypisywania liczby na ekran użyta została funkcja `printf` z biblioteki `C`. Przyjmuje ona jednak liczbę w formacie `double`. Zaszła więc potrzeba rozszerzenia liczby do 64b. Wywołanie funkcji wygląda następująco:
+Jako, że w treści zadania wypisanie liczby decymalnie nie ma stricte wymogu o stosowaniu operacji stałoprzecinkowych, do wypisywania liczby na ekran użyta została funkcja `printf` z biblioteki `C`. Przyjmuje ona jednak liczbę w formacie `double`. Zaszła więc potrzeba rozszerzenia liczby do 64b. Wywołanie funkcji wygląda następująco:
 ```
 pushl d1+4
 pushl d1
@@ -150,13 +150,27 @@ call printf
 Fukcja ta zdejmuje ze stosu 32b + 64b. Jako, że program kompilowany jest w architekturze 32b, to zachodzi potrzeba położenia liczby na stos w dwóch częściach.
 Przy ręcznym rozszerzaniu liczby z reprezentacji `single` do `double`, trzeba mieć też na uwadze sposób ułożenia bajtów w pamięci - *little endian*.
 
+Kod źródłowy programu, gdzie zastosowana została ta technika, znajduje się w pliku `fPrint.s`.
+
+#### Rozkazy FPU
+
+Wypisać liczby na ekran można również przy użyciu schametu Hornera i operacji jednostki zmiennoprzecinkowej. Ważnym elementem, stosując tę metodę, było ustawienie trybu zaokrąglania na obcięcie, co było porządane przy zaokrąglaniu liczby do części całkowitej.
+```
+fstcw controlWord
+orw $0x0C00, controlWord
+fldcw controlWord
+```
+Powyższy fragment kodu ładuje słowo kontrolne **FPU** do pamięci, modyfikuje bity odpowiedzialne za tryb zaokrąglenia, a następnie ładuje słowo z powrotem do rejestru. 
+
+Kod źródłowy programu, gdzie zastosowana została ta technika, znajduje się w pliku `fPrintFPU.s`.
+
 ## Wnioski
 
 Przy pisaniu programów warto często rozważyć opcje użycia zamiast funkcji, makra, a wysokopoziomowo funkcji `inline`. Są one szybsze i w przypadku nieskomplikowanych zadań takich jak pobranie wykładnika czy ułamka liczby, przy wielokrotnym wywołaniu, zwiększają czytelność kodu i stanowią minimalny narzut czasowy.
 
 Do testowania stworzonych programów idealnym byłoby podzielenie ich na funkcje realizujące poszczególne działania i napisanie wielu testów jednostkowych, jednak w tym przypadku stosunek wartości efektów do czasu, który trzeba przeznaczyć na stworzenie tych testów jest mały. Celem ćwiczenia jest bowiem trenowanie podstaw asemblera i wiedzy teoretycznej z zakresu arytmetyki, a nie tworzenie idealnie działającej biblioteki.
 
-Wykonywanie obliczeń na liczbach zmiennoprzecinkowych za pomocą instrukcji stałoprzecinkowych można włączyć dodając do kompilatora flagę `-fsoft-float`.
+Wykonywanie obliczeń na liczbach zmiennoprzecinkowych za pomocą instrukcji stałoprzecinkowych można włączyć dodając do kompilatora flagę `-fsoft-float`, jednak obecna domyślnie w systemie *Ubuntu 18.4* biblioteka `libc` nie posiada skompilowanej zależności `soft-fp`.
 
 ### Literatura
 1. http://www.rfwireless-world.com/Tutorials/floating-point-tutorial.html
@@ -171,3 +185,4 @@ http://www.cs.virginia.edu/~evans/cs216/guides/x86.html
 7. `gdb help`
 8. `man command`
 9. Lokalne etykiety - https://stackoverflow.com/questions/39602313/why-cannot-define-same-local-label-in-multiple-functions
+10. FPU - http://www.website.masmforum.com/tutorials/fptute/fpuchap1.htm
