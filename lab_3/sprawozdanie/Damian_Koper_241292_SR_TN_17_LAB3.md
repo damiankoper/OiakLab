@@ -1,6 +1,6 @@
 <div style="display:flex;justify-content:space-between"><span>Damian Koper, 241292<br>SR-TN-17</span> Wrocław, 10.04.2019r. </div>
 
-# Lab 3: 
+# Lab 3: IEEE-754 i FPU
 
 ## Cel ćwiczenia
 * Zapoznanie się z jednostką zmiennoprzecinkową, rejestry, instrukcje **FPU**
