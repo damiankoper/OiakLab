@@ -171,7 +171,7 @@ Przy pisaniu programów warto często rozważyć opcje użycia zamiast funkcji, 
 Do testowania stworzonych programów idealnym byłoby podzielenie ich na funkcje realizujące poszczególne działania i napisanie wielu testów jednostkowych, jednak w tym przypadku stosunek wartości efektów do czasu, który trzeba przeznaczyć na stworzenie tych testów jest mały. Celem ćwiczenia jest bowiem trenowanie podstaw asemblera i wiedzy teoretycznej z zakresu arytmetyki, a nie tworzenie idealnie działającej biblioteki.
 
 Wykonywanie obliczeń na liczbach zmiennoprzecinkowych za pomocą instrukcji stałoprzecinkowych można włączyć dodając do kompilatora flagę `-fsoft-float`, jednak obecna domyślnie w systemie *Ubuntu 18.4* biblioteka `libc` nie posiada skompilowanej zależności `soft-fp`.
-
+<br><br>
 ### Literatura
 1. http://www.rfwireless-world.com/Tutorials/floating-point-tutorial.html
 2. http://x86asm.net/articles/fixed-point-arithmetic-and-tricks/
