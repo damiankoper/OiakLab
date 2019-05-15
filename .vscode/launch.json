@@ -78,6 +78,20 @@
             "name": "fPrintFPU",
             "program": "${workspaceFolder}/lab_3/bin/fPrintFPU.out",
             "preLaunchTask": "makeFPrintFPU"
+        },
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "my_sinDemo",
+            "program": "${workspaceFolder}/lab_4/bin/my_sinDemo.out",
+            "preLaunchTask": "makeMySin"
+        },
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "integral",
+            "program": "${workspaceFolder}/lab_4/bin/integral.out",
+            "preLaunchTask": "makeIntegral"
         }
     ]
 }
