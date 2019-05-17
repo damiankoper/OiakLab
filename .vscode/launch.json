@@ -92,6 +92,13 @@
             "name": "integral",
             "program": "${workspaceFolder}/lab_4/bin/integral.out",
             "preLaunchTask": "makeIntegral"
+        },
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "stacktrace",
+            "program": "${workspaceFolder}/lab_4/bin/stacktraceDemo.out",
+            "preLaunchTask": "makeStacktraceDemo"
         }
     ]
 }

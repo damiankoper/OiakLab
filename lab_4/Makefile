@@ -13,6 +13,10 @@ $(BIN)/my_sinDemo.out: $(BUILD)/my_sin.o $(BUILD)/my_sinDemo.o
 	$(MKDIR_P) $(dir $@)
 	gcc -g -m32 $^ -o $@ 
 
+$(BIN)/stacktraceDemo.out: $(BUILD)/stacktrace.o $(BUILD)/stacktraceDemo.o
+	$(MKDIR_P) $(dir $@)
+	gcc -g -m32 $^ -o $@ 
+
 $(BIN)/%.out: $(BUILD)/%.o $(COMMON)
 	$(MKDIR_P) $(dir $@)
 	ld -melf_i386 -dynamic-linker /lib/i386-linux-gnu/ld-linux.so.2 $^  -o $@ -lc
