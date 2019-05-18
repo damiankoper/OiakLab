@@ -1,6 +1,6 @@
 <div style="display:flex;justify-content:space-between"><span>Damian Koper, 241292<br>SR-TN-17</span> Wrocław, 08.05.2019r. </div>
 
-# Lab 3: FPU, konwencje wywołania, analiza stosu
+# Lab 4: FPU, konwencje wywołania, analiza stosu
 
 ## Cel ćwiczenia
 * Złożone działania wykorzystujące FPU - całka oznaczona
