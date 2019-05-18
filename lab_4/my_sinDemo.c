@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-extern double my_sin(float a);
+extern float my_sin(float a);
 
 int main(int argc, char *argv[])
 {

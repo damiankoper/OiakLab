@@ -76,10 +76,10 @@ _start:
 
   # Obliczanie wysokości trapezu
   fildl numOfIntervals
-  fldl b
   fldl a
+  fldl b
   
-  fsubpa
+  fsubp
   fdivp
   # Zapisz interval
   fstpl interval
