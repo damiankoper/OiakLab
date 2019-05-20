@@ -84,7 +84,7 @@ ONP: i b a - / (zapisz i zdejmij ze stosu)
 
 #### Całka sin(x)
 
-Na jedną iteracje liczenia całki składają się dwie operacje:
+Na jedną iterację liczenia całki składają się dwie operacje:
 1. Obliczenia pola trapezu i dodanie go do wyniku
 2. Przesunięcie punktu `a` o wysokość trapezu
 
@@ -116,7 +116,7 @@ czyli:
 ```
 log10(x) = log2(x) * log10(2)
 ```
-Wykorzystując instrukcję `FYL2X` możemy obliczyć wynik działania `y * log2(x)`. Mając zatem na uwadze kolejnośc operandów możemy zapisać następujące działanie:
+Wykorzystując instrukcję `FYL2X` możemy obliczyć wynik działania `y * log2(x)`. Mając zatem na uwadze kolejność operandów możemy zapisać następujące działanie:
 ```
 a - początek, b - koniec, x - wysokośc trapezu, w - wynik (już na stosie)
 
@@ -131,7 +131,7 @@ Stała `log10(2)` ładowana jest za pomocą rozkazu `FLDL2G`.
 
 Program `integral` odpowiedzialny jest również za pomiar czasu wykonania fragmentu kodu. Elementem pomiaru jest procedura obliczania całki `sin(x)`. Do pomiaru użyto rozkazu `RDTSC`. Rozkaz ten wypełnia rejestry `edx:eax` zawartością rejestru `TSC`, którego zawartość inkrementowana jest po każdym cyklu procesora. Przy długości 64-bit i maksymalnej częstotliwości taktowania procesora *3.0 GHz* rejestr ten nie ulegnie przepełnieniu przez ok. 200 lat. Przez swoją dokładność może być on użyty do ataków czasowych, na którym opierają się między innymi ataki Meltdown i Spectre.
 
-`RDTSC` nie jest instrukcją serializującą - procesor, poprzez spekulatywne wykonywanie kodu, bądź *pipielining*, może odczytać zawartośc rejestru `TSC` zanim wykona poprzednie instrukcje. Aby temu zapobiec trzeba poprzedzić rozkaz `RDTCS` rozkazem `CPUID`, który jest instrukcją serializującą. Alternatywą jest użycie instrukcji `RDTSCP`, która łączy odczyt `TSC` i serializację.
+`RDTSC` nie jest instrukcją serializującą - procesor, poprzez spekulatywne wykonywanie kodu, bądź *pipielining*, może odczytać zawartość rejestru `TSC` zanim wykona poprzednie instrukcje. Aby temu zapobiec trzeba poprzedzić rozkaz `RDTCS` rozkazem `CPUID`, który jest instrukcją serializującą. Alternatywą jest użycie instrukcji `RDTSCP`, która łączy odczyt `TSC` i serializację.
 <div style="margin-bottom:50px"></div>
 
 ```
@@ -198,7 +198,7 @@ Analizując stos po wejściu do funkcji `my_sin` i utworzeniu ramki stosu:
 ```
 
 #### Redzone
-Konwencja wywołania w *System V AMD64 ABI* opisuje również utrzymanie tzw. *redzone*, która jest 128-bitową przestrzenią znajdującą się za szczytem stosu, a która może być swobodnie używana bez obawy o naruszenie danych przez obsługe sygnałów i przerwań. Funkcja może używać tej przestrzeni do zapisywania danych lokalnych bez dodatkowego narzutu czasowego, który byłby spowodowany modyfikacją wskaźnika na szczyt stosu.
+Konwencja wywołania w *System V AMD64 ABI* opisuje również utrzymanie tzw. *redzone*, która jest 128-bitową przestrzenią znajdującą się za szczytem stosu, a która może być swobodnie używana bez obawy o naruszenie danych przez obsługę sygnałów i przerwań. Funkcja może używać tej przestrzeni do zapisywania danych lokalnych bez dodatkowego narzutu czasowego, który byłby spowodowany modyfikacją wskaźnika na szczyt stosu.
 
 ### StackTrace - ślad stosu
 
