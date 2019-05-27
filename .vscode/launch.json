@@ -99,6 +99,20 @@
             "name": "stacktrace",
             "program": "${workspaceFolder}/lab_4/bin/stacktraceDemo.out",
             "preLaunchTask": "makeStacktraceDemo"
+        },
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "threads",
+            "program": "${workspaceFolder}/lab_5/bin/threads.out",
+            "preLaunchTask": "makeThreads"
+        },
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "threads",
+            "program": "${workspaceFolder}/lab_5/bin/array.out",
+            "preLaunchTask": "makeArray"
         }
     ]
 }
