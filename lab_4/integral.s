@@ -7,7 +7,7 @@
   strFormatInt: .string "%d"
   strFormatSin: .string "Całka z sin(x): %f \n"
   strFormatLog: .string "Całka z log(x): %f \n"
-  strFormatTime: .string "Obliczenia zajęły %ld cykli procesora. \n"
+  strFormatTime: .string "Obliczenia zajęły %lld cykli procesora. \n"
 
 
   two_const: .double 2.0

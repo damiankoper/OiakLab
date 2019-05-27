@@ -110,7 +110,7 @@
         {
             "type": "gdb",
             "request": "launch",
-            "name": "threads",
+            "name": "array",
             "program": "${workspaceFolder}/lab_5/bin/array.out",
             "preLaunchTask": "makeArray"
         }
