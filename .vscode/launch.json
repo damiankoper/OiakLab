@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "type": "gdb",
             "request": "launch",
@@ -113,6 +114,13 @@
             "name": "array",
             "program": "${workspaceFolder}/lab_5/bin/array.out",
             "preLaunchTask": "makeArray"
+        },
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "bufferOverflow",
+            "program": "${workspaceFolder}/lab_5/bin/bufferOverflow.out",
+            "preLaunchTask": "makeBO"
         }
     ]
 }

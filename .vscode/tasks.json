@@ -334,6 +334,28 @@
       },
       "problemMatcher": []
     }
+    ,
+    {
+      "label": "makeBO",
+      "type": "shell",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "options": {
+        "cwd": "${workspaceRoot}/lab_5"
+      },
+      "command": "make ./bin/bufferOverflow.out",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
 
 
   ]
