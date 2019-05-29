@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
+int main(int argc, char **argv);
+
 int topSecret()
 {
     printf("\nJak zdać OiAK!\n");
@@ -13,12 +15,16 @@ int topSecret()
 
 int func()
 {
-    // Źle zabezpieczone indeksowanie tablicy
+    // Źle zabezpieczone indeksowanie tablicy -> symulacja
     char str[4];    
-    int *secretAddr = &topSecret;
-    memcpy((void*)str+20, &secretAddr, 4);
+    
+    //printf("%p\n", (void*)&topSecret);
+    //printf("%p\n", (str));
+    /*int *secretAddr = &topSecret;
+    memcpy((void*)str+20, &secretAddr, 4);*/
+    /// ######
 
-    // Dalsze, bezowocne próby z plikiem
+    // Nadpisanie adresu powrotu przez fread
     FILE *f = fopen("helloFromHello.out", "rb");
     if (f == NULL)
     {
@@ -26,16 +32,23 @@ int func()
     }
     else
     {
-        fread(str, 1, 12, f);
-        printf("%s\n", str);
+        //register int sp asm ("bp");
+        //printf("%p\n", sp);
+        fread(str, 1, 24, f);
     }
+    /// ######
+    //register int sp1  asm ("sp");
+    //printf("%p\n", sp1);
+    //printf("%p\n", *(int*)(0xffffce3c));
+    //printf("%p\n", (void*)&main);
+
     printf("Wszystko super w funkcji\n");
     return 0;
 }
 int main(int argc, char **argv)
 {
     func();
-    printf("Wszystko super w mainie też\n");
+    printf("Wszystko super w mejnie też\n");
     return 0;
 }
 // python -c 'print "a"*32 + "\x56\x55\x55\x98"' | ./bin/bufferOverflow.out

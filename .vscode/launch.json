@@ -121,6 +121,13 @@
             "name": "bufferOverflow",
             "program": "${workspaceFolder}/lab_5/bin/bufferOverflow.out",
             "preLaunchTask": "makeBO"
+        },
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "memoryFiddle",
+            "program": "${workspaceFolder}/lab_5/bin/memoryFiddle.out",
+            "preLaunchTask": "makeMemoryFiddle"
         }
     ]
 }
