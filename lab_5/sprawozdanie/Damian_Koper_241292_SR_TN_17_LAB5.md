@@ -39,7 +39,7 @@ Rozmiar wirtualny prezentuje wielkość jaką proces *"myśli, że zajmuje"* i d
 https://github.com/damiankoper/OiakLab/tree/master/lab_5
 
 ### Wątki
-Program `threads` za pomocą syscall'a `clone` tworzy dwa wątki ustawiając im odpowiednie flagi oraz blok pamięci stanowiący jego nowy stos, gdzie pierwszy adres stanowi wskaźnik na pierwszą instrukcję.
+Program `threads` za pomocą syscall'a `clone` tworzy dwa wątki ustawiając im odpowiednie flagi oraz blok pamięci stanowiący jego nowy stos, gdzie pierwszy adres stanowi wskaźnik na pierwszą instrukcję. Wątek utworzony syscall'em `clone`kontynuuje swoje działanie od momentu owego przerwania. Mając na szczycie stosu adres swojej funkcji, za pomocą funkcji `RET`może on wrócić/wejść do swojej głównej funkcji.
 
 Wątki wypisują do `stdout` liczby od 9 do 0. W programie występuje zmienna `c`, która jest inkrementowana po stworzeniu wątku i dekrementowana po jego zakończeniu. Obie operacje poprzedzone są prefixem `LOCK`. Zmienna ta jest semaforem, informującym główny wątek, który czeka w `SpinnLock'u`, o zakończeniu wątków - dzieci.
 
